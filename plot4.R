@@ -23,11 +23,12 @@ readings <- cbind(datetime, readings)
 readings <- readings[readings$Date == '1/2/2007' |
     readings$Date == '2/2/2007',]
 
+# Output to a PNG file. Do so directly because plotting to the screen and then
+#  saving to a file distorts the image (most noticably the legend is truncated)
+png("plot4.png", width = 480, height = 480)
+
 # 2 x 2 plots
 par(mfrow = c(2, 2))
-
-# Slightly smaller than default text
-par(cex = 0.75)
 
 # Plot the data
 with(readings,
@@ -67,6 +68,4 @@ with(readings,
     }
 )
 
-# Save the plot to a 480x480 PNG file
-dev.copy(png, file = "plot4.png", width = 480, height = 480)
 dev.off()
