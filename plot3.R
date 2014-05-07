@@ -23,7 +23,9 @@ readings <- cbind(datetime, readings)
 readings <- readings[readings$Date == '1/2/2007' |
     readings$Date == '2/2/2007',]
 
-par(cex = 0.8)
+# Output to a PNG file. Do so directly because plotting to the screen and then
+#  saving to a file distorts the image (most noticably the legend is truncated)
+png("plot3.png", width = 480, height = 480)
 
 # Plot the data
 with(readings,
@@ -44,6 +46,4 @@ with(readings,
     }
 )
 
-# Save the plot to a 480x480 PNG file
-dev.copy(png, file = "plot3.png", width = 480, height = 480)
 dev.off()
